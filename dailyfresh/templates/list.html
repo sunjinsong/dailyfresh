@@ -1,0 +1,91 @@
+{% extends 'base_detail_list.html' %}
+
+{% block title %}天天生鲜-商品列表{% endblock %}
+
+
+
+{% block main_content %}
+	<div class="breadcrumb">
+		<a href="#">全部分类</a>
+		<span>></span>
+		<a href="#">新鲜水果</a>
+	</div>
+
+	<div class="main_wrap clearfix">
+		<div class="l_wrap fl clearfix">
+			<div class="new_goods">
+				<h3>新品推荐</h3>
+				<ul>
+					{% for goods in new_goods %}
+					<li>
+						<a href="#"><img src="/static/uploads/{{goods.image}}"></a>
+						<h4><a href="#">{{goods.name}}</a></h4>
+						<div class="prize">￥{{goods.price}}</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<div class="r_wrap fr clearfix">
+			<div class="sort_bar">
+				{% if sort == 'default' %}
+					<a href="/list/{{type}}/1?sort=default" class="active">默认</a>
+				{% else %}
+					<a href="/list/{{type}}/1?sort=default" class="">默认</a>
+				{% endif %}
+
+				{% if sort == 'price' %}
+					<a href="/list/{{type}}/1?sort=price" class="active">价格</a>
+				{% else %}
+					<a href="/list/{{type}}/1?sort=price" class="">价格</a>
+				{% endif %}
+
+
+				{% if sort == 'hot' %}
+					<a href="/list/{{type}}/1?sort=hot" class="active">人气</a>
+				{% else %}
+					<a href="/list/{{type}}/1?sort=hot">人气</a>
+				{% endif %}
+
+
+			</div>
+
+			<ul class="goods_type_list clearfix">
+				{% for page in skus_page %}
+				<li>
+					<a href="/detail/{{page.id}}"><img src="/static/uploads/{{page.image}}"></a>
+					<h4><a href="detail.html">{{page.name}}</a></h4>
+					<div class="operate">
+						<span class="prize">￥{{page.price}}</span>
+						<span class="unit">{{page.price}}/{{page.unite}}</span>
+						<a href="#" class="add_goods" title="加入购物车"></a>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+
+			<div class="pagenation">
+				{% if skus_page.has_previous %}
+				<a href="/list/{{type}}/{{skus_page.previous_page_number}}?sort={{sort}}"><上一页</a>
+				{% endif %}
+
+				{% for pindex in pages %}
+					{% if pindex == skus_page.number %}
+						<a href="/list/{{type}}/{{pindex}}?sort={{sort}}" class="active">{{pindex}}</a>
+					{% else %}
+						<a href="/list/{{type}}/{{pindex}}?sort={{sort}}">{{pindex}}</a>
+					{% endif %}
+				{% endfor %}
+
+				{% if skus_page.has_next %}
+				<a href="/list/{{type}}/{{skus_page.next_page_number}}?sort={{sort}}"><下一页</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+
+

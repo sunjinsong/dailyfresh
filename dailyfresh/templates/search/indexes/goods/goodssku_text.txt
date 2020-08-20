@@ -1,0 +1,10 @@
+#指定根据那些字段建立索引
+
+#文件名都是固定的，goods表示app名   goodssku是模型的小写
+
+{{objects.name}}    #根据商品的名称建立索引
+{{objects.desc}}    #根据商品的简介建立索引
+{{objects.goods.detail}}
+
+
+#python manage.py rebuild_index
