@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'study',
-        'HOST':'39.101.213.98',
-        'PASSWORD':'673074094',
-        'USER':'root',
+        'HOST':'',
+        'PASSWORD':'',
+        'USER':'',
     }
 }
 
@@ -148,20 +148,20 @@ TINYMCE_DEFAULT_CONFIIG={
 #发送邮件配置
 # EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL=True
-EMAIL_HOST='smtp.qq.com'
+EMAIL_HOST=''
 EMAIL_PORT=465
-EMAIL_HOST_USER='673074094@qq.com'
-EMAIL_HOST_PASSWORD='mzkchdefyawcbdbf'
+EMAIL_HOST_USER=''
+EMAIL_HOST_PASSWORD=''
 DEFAULT_FROM_EMAIL=EMAIL_HOST_USER
 
 #设置缓存
 CACHES={
     'default':{
         'BACKEND':'django_redis.cache.RedisCache',
-        'LOCATION':'redis://39.101.213.98:6379/3',
+        'LOCATION':'',
         'OPTIONS':{
             'CLIENT_CLASS':'django_redis.client.DefaultClient',
-            'PASSWORD':'1870178261',
+            'PASSWORD':'',
         }
     }
 }
